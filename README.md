@@ -8,3 +8,7 @@
 * Communication :
   * Discord : https://discord.gg/JhQxEc8kwN
   * Utilisez le canal **questions** pour que je sois notifié.
+
+| Travail  | Lien GitHub Classroom                   | Date de remise    |
+|----------|-----------------------------------------|-------------------|
+| Devoir 1 | https://classroom.github.com/a/71kBUkCT | 18 septembre 2024 |
