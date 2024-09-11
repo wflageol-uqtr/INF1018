@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "HiFRtYFfkck=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\flageolw\\Documents\\INF1018\\INF1018\\cours-02\\BasicLanguageStructureF#\\BasicLanguageStructureF#\\BasicLanguageStructureF#.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\flageolw\\.nuget\\packages\\fsharp.core\\8.0.301\\fsharp.core.8.0.301.nupkg.sha512"
+  ],
+  "logs": []
+}
