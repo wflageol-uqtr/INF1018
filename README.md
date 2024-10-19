@@ -13,3 +13,4 @@
 |----------|-----------------------------------------|-------------------|
 | Devoir 1 | https://classroom.github.com/a/71kBUkCT | 18 septembre 2024 |
 | Devoir 2 | https://classroom.github.com/a/lCEUWIXt | 9 octobre 2024    |
+| Devoir 3 | https://classroom.github.com/a/BAubtDlD | 6 novembre 2024   |
