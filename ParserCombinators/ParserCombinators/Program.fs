@@ -2,19 +2,22 @@
 
 open Streams
 open Combinators
+open Lexer
+open Semantic
+open Interpreter
 
-type Token = Lettre of char
-           | Chiffre of int
+// On crée un stream de caractères à passer au lexer.
+let charStream = stream "1234 + 123 - 56 * 21"
+let tokens = lex charStream
 
-let word string =
-    Seq.map (fun e -> chars [e]) string
-    |> Seq.reduce bind
+// Affichage de tous les tokens retournés par le lexer.
+for token in tokens do
+    Console.WriteLine token
 
-let digit = chars ['0'..'9']
+// On crée un stream de token à passer au parser sémantique.
+let tokenStream = stream tokens
+let ast = parseOperation tokenStream |> unwrap |> Seq.head
 
-let integer = digit >>= (many digit)
-
-
-let str = stream "1234"
-
-integer str |> Console.WriteLine
+// On passe l'arbre de syntaxe abstrait obtenu à l'interpréteur.
+interpretOperation ast
+|> Console.WriteLine
