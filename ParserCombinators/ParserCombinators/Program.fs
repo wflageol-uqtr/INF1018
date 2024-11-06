@@ -7,7 +7,7 @@ open Semantic
 open Interpreter
 
 // On crée un stream de caractères à passer au lexer.
-let charStream = stream "1234 + 123 - 56 * 21"
+let charStream = stream "1234 * 123 - 3642 / 12345"
 let tokens = lex charStream
 
 // Affichage de tous les tokens retournés par le lexer.
@@ -16,8 +16,8 @@ for token in tokens do
 
 // On crée un stream de token à passer au parser sémantique.
 let tokenStream = stream tokens
-let ast = parseOperation tokenStream |> unwrap |> Seq.head
+let ast = parseExpression tokenStream |> unwrap |> Seq.head
 
 // On passe l'arbre de syntaxe abstrait obtenu à l'interpréteur.
-interpretOperation ast
+interpret ast
 |> Console.WriteLine

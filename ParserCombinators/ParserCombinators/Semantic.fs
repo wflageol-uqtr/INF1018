@@ -4,12 +4,11 @@ open Streams
 open Combinators
 open Lexer
 
-type Expression = { Left: int
-                    Op: Operator
-                    Operation: Operation }
-and Operation = Expression of Expression | Scalar of int 
+type Expression = int * PartialExpression
+and  PartialExpression = EmptyExpression
+                       | TailExpression of Operator * int * PartialExpression
 
-/// Convertis un token en entier.
+// Convertis un token en entier.
 let convertInteger (token: Token option) : int =
     match token with
     | Some (Integer i) -> i
@@ -21,28 +20,28 @@ let convertOp (token: Token option) : Operator =
     | Some (Op o) -> o
     | _ -> failwith "Invalid conversion."
 
-// Parser qui valide que les prochains token correspondent à une expression.
 let rec parseExpression : Parser<Token, Expression> =
-    fun stream -> 
-        let leftToken, stream = next stream
-        let left = convertInteger leftToken
+    fun stream ->
+        let scalarToken, stream = next stream
+        let scalar = convertInteger scalarToken
 
-        let opToken, stream = next stream
-        let op = convertOp opToken
-
-        match parseOperation stream with
-        | Ok (operation, stream) ->
-            Ok ([{ Left = left; Op = op; Operation = Seq.head operation }], stream)
+        match parsePartialExpression stream with
+        | Ok (pExpr, stream) ->
+            Ok([(scalar, Seq.head pExpr)], stream)
         | Error -> Error
 
-// Parser qui valide que les prochains token correspondent à une opération.
-and parseOperation : Parser<Token, Operation> =
-    fun stream -> 
-        let intToken, newStream = next stream
-        let int = convertInteger intToken
+and parsePartialExpression : Parser<Token, PartialExpression> =
+    fun stream ->
+        match peek stream with
+        | Some _ ->
+            let opToken, stream = next stream
+            let op = convertOp opToken
 
-        match peek newStream with
-        | Some _ -> match parseExpression stream with
-                    | Ok (r, s) -> Ok(Seq.map Expression r, s)
-                    | Error -> Error 
-        | None -> Ok([Scalar int], newStream)
+            let scalarToken, stream = next stream
+            let scalar = convertInteger scalarToken
+
+            match parsePartialExpression stream with
+            | Ok (pExpr, stream) ->
+                Ok([TailExpression (op, scalar, Seq.head pExpr)], stream)
+            | Error -> Error
+        | None -> Ok ([EmptyExpression], stream)

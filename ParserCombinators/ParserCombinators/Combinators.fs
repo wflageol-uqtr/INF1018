@@ -6,7 +6,7 @@ type Result<'a, 'b> = Ok of seq<'b> * Stream<'a>
                     | Error
 type Parser<'a, 'b> = Stream<'a> -> Result<'a, 'b>
 
-/// Exécute le prédicat sur le caractère actuel du stream.
+// Exécute le prédicat sur le caractère actuel du stream.
 let one (predicate: 'a -> bool) : Parser<'a, 'a> =
     fun stream ->
         let element, newStream = next stream
@@ -14,7 +14,7 @@ let one (predicate: 'a -> bool) : Parser<'a, 'a> =
         then Ok (List.toSeq [element.Value], newStream)
         else Error
 
-/// Combine séquentiellement deux parsers en un seul. Les résulats sont concaténés.
+// Combine séquentiellement deux parsers en un seul. Les résulats sont concaténés.
 let bind (p1: Parser<'a, 'b>) (p2: Parser<'a, 'b>) : Parser<'a, 'b> =
     fun stream ->
         match p1 stream with
@@ -24,12 +24,12 @@ let bind (p1: Parser<'a, 'b>) (p2: Parser<'a, 'b>) : Parser<'a, 'b> =
             | Error -> Error
         | Error -> Error
 
-/// Opérateur infix pour bind.
+// Opérateur infix pour bind.
 let (>>=) = bind
 
-/// Crée un parser qui applique le parser spécifié autant de fois que possible. 
-/// Le parser résultant ne peut pas retourner Error.
-/// Il retourne un Ok vide si le parser spécifié ne s'applique pas.
+// Crée un parser qui applique le parser spécifié autant de fois que possible. 
+// Le parser résultant ne peut pas retourner Error.
+// Il retourne un Ok vide si le parser spécifié ne s'applique pas.
 let many (p: Parser<'a, 'b>) : Parser<'a, 'b> =
     fun stream -> 
         let rec doMany acc stream =
@@ -38,8 +38,8 @@ let many (p: Parser<'a, 'b>) : Parser<'a, 'b> =
             | Error -> Ok (acc, stream)
         doMany [] stream
 
-/// Combine une liste de parsers en un seul parser qui appliquera le premier parser valide de la liste.
-/// Le parser résultant retournera Error si aucun des parsers de sa liste ne s'applique. 
+// Combine une liste de parsers en un seul parser qui appliquera le premier parser valide de la liste.
+// Le parser résultant retournera Error si aucun des parsers de sa liste ne s'applique. 
 let either (ps: Parser<'a, 'b> list) : Parser<'a, 'b> =
     fun stream -> 
         let rec doEither rest =
@@ -50,7 +50,7 @@ let either (ps: Parser<'a, 'b> list) : Parser<'a, 'b> =
             | [] -> Error
         doEither ps            
 
-/// Crée un parser qui appliquera la transformation fn au résultat du parser spécifié.
+// Crée un parser qui appliquera la transformation fn au résultat du parser spécifié.
 let convert (fn: 'b seq -> 'c seq) (p: Parser<'a, 'b>) : Parser<'a, 'c> =
     fun stream -> 
         match p stream with
