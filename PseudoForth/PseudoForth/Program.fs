@@ -1,17 +1,16 @@
 ﻿open System
 
 open Streams
-open Combinators
 open Lexer
 open Semantic
 open Interpreter
 
 let source = "
-: double dup +; 
-: quadruple double double; 
-: greeting \"Hello World!\"; 
+: double dup +;
+: quadruple double double;
 
-5 3 * double quadruple print greeting print [1 2 [4 5 6] 3] print"
+5 3 * quadruple to x
+x x + print"
 let sourceStream = stream source
 
 let tokens = lex sourceStream

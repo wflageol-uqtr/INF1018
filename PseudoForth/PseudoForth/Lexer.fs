@@ -35,7 +35,7 @@ let convertToListSep seq : Token seq =
 
 // Définition du lexique du langage :
 let digit = chars ['0'..'9']
-let spaces = chars [' '; '\r'; '\n'; '\t'] >>= many (chars [' '])
+let spaces = chars [' '; '\r'; '\n'; '\t'] >>= many (chars [' '; '\r'; '\n'; '\t'])
 let integer = digit >>= (many digit) |> convert convertToInt
 let alpha = List.reduce List.append [['A'..'Z'];['a'..'z'];['+';'-';'*';'/';'_';':']]
             |> chars
