@@ -41,7 +41,7 @@ S.V.P. évitez de m'envoyer des questions par courriel; j'en reçois déjà beau
 
 Je réserve une partie (idéalement la moitié) de chaque séance de cours que vous laisser le temps de lire les notes de cours, travailler sur les différents travaux au cours de la session et me poser des questions.
 
-Je serai aussi disponible tous les mardi après-midi (jusqu'à 16h) à mon bureau au 3072R. Ma porte reste généralement ouverte, alors vous être libres de venir me voir à tout moment.
+Je serai généralement à mon bureau au 3072-R les mardi après-midi (jusqu'à 15h). Ma porte reste généralement ouverte, alors vous être libres de venir me voir à tout moment.
 
 Vous pouvez aussi me contacter par message privé sur Discord.
 
