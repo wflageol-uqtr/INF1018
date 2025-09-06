@@ -2,10 +2,6 @@
 
 ## Bienvenu dans ce cours d'Analyse de Programme!
 
-> _The most obvious proof that Devs are better than Wizards: Devs are often asked to perform magic. Wizards are never asked to write software._
->
-> -- <cite>Michalis Famelis, professeur à l'UDM</cite>
-
 ### Quelques mots par rapport à moi
 
 Mon nom est William Flageol, je suis enseignant à l'UQTR depuis maintenant 5 ans. J'ai aussi enseigné brièvement à l'UQAM. J'ai terminé mon doctorat en Génie Logiciel à l'Université Concordia en 2023.
