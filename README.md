@@ -3,10 +3,10 @@
 ## Informations Générales
 
 * Professeur : William Flageol (william.flageol@uqtr.ca)
-* Horaire du groupe, session d'automne 2024 :
-  * Cours : Mercredi, 15h30 - 18h30, 2098-R
+* Horaire du groupe, session d'automne 2025 :
+  * Cours : Lundi, 8h30 - 11h30, 1066-R
 * Communication :
-  * Discord : https://discord.gg/JhQxEc8kwN
+  * Discord : [https://discord.gg/JhQxEc8kwN](https://discord.gg/eBDjBMTuSx)
   * Utilisez le canal **questions** pour que je sois notifié.
 
 | Travail  | Lien GitHub Classroom                   | Date de remise    |
