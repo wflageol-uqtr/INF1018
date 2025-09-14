@@ -6,11 +6,11 @@
 * Horaire du groupe, session d'automne 2025 :
   * Cours : Lundi, 8h30 - 11h30, 1066-R
 * Communication :
-  * Discord : [https://discord.gg/JhQxEc8kwN](https://discord.gg/eBDjBMTuSx)
+  * Discord : [https://discord.gg/eBDjBMTuSx](https://discord.gg/eBDjBMTuSx)
   * Utilisez le canal **questions** pour que je sois notifié.
 
 | Travail  | Lien GitHub Classroom                   | Date de remise    |
 |----------|-----------------------------------------|-------------------|
-| Devoir 1 |  | 29 septembre |
+| Devoir 1 | [https://classroom.github.com/a/lr4eWEff](https://classroom.github.com/a/lr4eWEff) | 29 septembre |
 | Devoir 2 |  | 27 octobre   |
 | Projet   |  | 15 décembre  |
