@@ -272,7 +272,7 @@ Par exemple, considérons une règle BNF pour l'instruction classique `if then e
                  <instruction>;
 ```
 
-Remarquez que nous somme contraint de dupliquer l'expression au complet pour les deux possibilités (avec ou sans `else`). La notation ENF apporte certaines extensions, dont notament :
+Remarquez que nous somme contraint de dupliquer l'expression au complet pour les deux possibilités (avec ou sans `else`). La notation EBNF apporte certaines extensions, dont notament :
 
 * La possibilité d'avoir une partie optionelle :
 
@@ -339,7 +339,7 @@ Certaines caractéristiques des langages de programmation sont difficiles, voire
 
 On peut étendre la notation BNF pour ajouter le support d'attributs. Cette extension permet la description de certaines règles de langage, comme la vérification des types. La vérification de ces règles peut être effectuée durant l'analyse statique et ne nécessite pas l'exécution du code.
 
-> À noter que tous ces exemples de grammaires à attributs son à titre d'aperçu seulement. **_Vous n'avez pas à apprendre les notations utilisées dans cette section!_** Les notations importantes à comprendre et qui seront utilisées dans le cours sont BNF et EBNF.
+> À noter que tous ces exemples de grammaires à attributs sont à titre d'aperçu seulement. **_Vous n'avez pas à apprendre les notations utilisées dans cette section!_** Les notations importantes à comprendre et qui seront utilisées dans le cours sont BNF et EBNF.
 
 Une grammaire à attributs a les caractéristiques supplémentaires suivantes :
 
