@@ -482,15 +482,15 @@ Une panoplie de différentes approches existent pour la compilation et l'interpr
 
 Une approche populaire, utilisée entre autres par C#, Common Lisp, Kotlin et Java, est de compiler le code vers un langage intermédiaire plus facile à interpréter. Par exemple, C# compile en MSIL (_Microsoft Intermediary Language_) et Java en bytecode. Ce code intermédiaire est ensuite interprété par une machine virtuelle qui agit d'interpréteur entre le code intermédiaire et le système d'exploitation.
 
-#### Comparison entre les différences approches
+#### Comparaison entre les différences approches
 
-En général, la compilation produit des logiciels plus performant, parce que la majorité du processus d'interprétation est fait d'avance par le compilateur et le langage résultant est très proche du langage nécessité par les composants physiques.
+En général, la compilation produit des logiciels plus performant, parce que la majorité du processus d'interprétation est fait d'avance par le compilateur et le code résultant est très proche du langage nécessité par les composants physiques.
 
 Dans l'autre extrême, l'interprétation pure est lente parce que pour chaque instruction, le processus doit être répété en entier, et aucune optimisation n'est possible sans connaître l'entièreté du programme.
 
 Aujourd'hui, les processus hybrides voient une excellente performance, malgré le fait qu'ils ne sont que partiellement compilé. Par exemple, C# est maintenant un des langages majeurs utilisés dans le développement de jeux-vidéos, qui sont des applications en temps réel nécessitant une haute performance.
 
-Un auter point à considérer est la facilité de déboguage du programme. Les programmes compilés sont notament plus difficiles à déboguer dû à la problématique d'associer une erreur d'exécution au texte source d'origine. Les programmes interprétés ont un lien directe entre l'instruction et l'exécution et sont donc plus facile à suivre durant leur exécution.
+Un autre point à considérer est la facilité de déboguage du programme. Les programmes compilés sont notament plus difficiles à déboguer dû à la problématique d'associer une erreur d'exécution au texte source d'origine. Les programmes interprétés ont un lien direct entre l'instruction et l'exécution et sont donc plus faciles à suivre durant leur exécution.
 
 ## Références et lectures connexes
 
