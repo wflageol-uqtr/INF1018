@@ -12,5 +12,5 @@
 | Travail  | Lien GitHub Classroom                   | Date de remise    |
 |----------|-----------------------------------------|-------------------|
 | Devoir 1 | [https://classroom.github.com/a/lr4eWEff](https://classroom.github.com/a/lr4eWEff) | 29 septembre |
-| Devoir 2 |  | 27 octobre   |
+| Devoir 2 | [https://classroom.github.com/a/BFzslDNO](https://classroom.github.com/a/BFzslDNO) | 27 octobre   |
 | Projet   |  | 15 décembre  |
