@@ -5,86 +5,77 @@ open Semantic
 open System
 open System.Collections.Generic
 
-type DataType = DataInt of int
-              | DataText of string
-              | DataList of DataType list
+type VirtualMachine = { Words: Dictionary<string, Instruction list>
+                        Variables: Dictionary<string, ScalarType>
+                        OperationStack: Stack<ScalarType> }
 
-type VirtualMachine = { Instructions: Stack<AstToken>
-                        Stack: Stack<DataType>  
-                        Dictionary: Dictionary<string, AstToken list>
-                        Variables: Dictionary<string, DataType>}
+let newVirtualMachine () = { Words = Dictionary<string, Instruction list>()
+                             Variables = Dictionary<string, ScalarType>()
+                             OperationStack = Stack<ScalarType>() }
+                             
+let scalarToInt scalar =
+    match scalar with
+    | ScalarInt i -> i
+    | _ -> failwith "Impossible de convertir en int."
 
-let newVirtualMachine ast = { Instructions = Seq.toArray ast |> Seq.rev |> Stack<AstToken>
-                              Stack = Stack<DataType>()
-                              Dictionary = Dictionary<string, AstToken list>()
-                              Variables = Dictionary<string, DataType>() }
+let scalarToText scalar =
+    match scalar with
+    | ScalarText t -> t
+    | ScalarInt i -> sprintf "%i" i
 
-let defineWord vm =
-    match vm.Instructions.Pop() with
-    | Scalar (Ident name) -> let rec accBody acc =
-                                match vm.Instructions.Pop () with
-                                | Scalar (Sep ';') -> List.rev acc
-                                | token -> accBody (token :: acc)
-                             let body = accBody []
-                             vm.Dictionary.Add (name, body)
-    | _ -> failwith "Not a valid word name."
+let rec interpret ast vm =
+    for instruction in ast do
+        match instruction with
+        | Scalar s -> interpretScalar s vm 
+        | Operation o -> interpretOperation o vm
+        | Assignation name -> interpretAssign name vm
+        | Declaration decl -> interpretDeclaration decl vm
+        | Call name -> interpretCall name vm
 
-let defineVariable vm =
-    match vm.Instructions.Pop() with
-    | Scalar (Ident name) -> let value = vm.Stack.Pop()
-                             vm.Variables.Add (name, value)
-    | _ -> failwith "Not a valid variable name."
+and interpretCall name vm =
+    if vm.Variables.ContainsKey name
+    then interpretScalar vm.Variables.[name] vm
+    else let instructions = vm.Words.[name]
+         interpret instructions vm
 
-let applyIntegerFunction2 vm fn =
-    let convertToInt token =
-        match token with
-        | DataInt i -> i
-        | _ -> failwith "Not an integer."
-    let p2 = vm.Stack.Pop () |> convertToInt
-    let p1 = vm.Stack.Pop () |> convertToInt
-    fn p1 p2 |> DataInt |> vm.Stack.Push
+and interpretScalar scalar vm =
+    vm.OperationStack.Push scalar
 
-let applyDup vm = vm.Stack.Peek() |> vm.Stack.Push
+and interpretAssign name vm =
+    vm.Variables.[name] <- vm.OperationStack.Pop ()
 
-let applyPrint vm =
-    let rec printToken token =
-        match token with
-        | DataText text -> Console.Write text
-        | DataInt i -> Console.Write i
-        | DataList list -> Console.Write "[ "
-                           for token in list do
-                             printToken token
-                             Console.Write " "
-                           Console.Write "]"
-    vm.Stack.Pop() |> printToken
-    Console.WriteLine()
-                        
+and interpretDeclaration decl vm =
+    vm.Words.[decl.WordName] <- decl.Definition
 
-let interpretFunctionCall vm name = 
-    match name with
-    | "+" -> applyIntegerFunction2 vm (+)
-    | "-" -> applyIntegerFunction2 vm (-)
-    | "*" -> applyIntegerFunction2 vm (*)
-    | "/" -> applyIntegerFunction2 vm (/)
-    | ":" -> defineWord vm
-    | "to" -> defineVariable vm
-    | "dup" -> applyDup vm
-    | "print" -> applyPrint vm
-    | ident -> let body = vm.Dictionary.GetValueOrDefault (ident, [])
-               if List.isEmpty body 
-               then vm.Variables.[ident] |> vm.Stack.Push
-               else for inst in List.rev body do
-                        vm.Instructions.Push inst
+and interpretOperation op vm =
+    match op with
+    | "+" -> interpretBinaryOperation (+) vm
+    | "-" -> interpretBinaryOperation (-) vm
+    | "*" -> interpretBinaryOperation (*) vm
+    | "/" -> interpretBinaryOperation (/) vm
+    | "dup" -> interpretDup vm
+    | "swap" -> interpretSwap vm
+    | "print" -> interpretPrint vm
+    | _ -> failwith "Opérateur invalide."
 
+and interpretBinaryOperation fn vm =
+    let left = vm.OperationStack.Pop () |> scalarToInt
+    let right = vm.OperationStack.Pop () |> scalarToInt
 
-let interpret vm =
-    while not (Seq.isEmpty vm.Instructions) do
-        let inst = vm.Instructions.Pop ()
+    let result = fn left right
 
-        match inst with
-        | Scalar (Ident name) -> interpretFunctionCall vm name
-        | Scalar (Integer i) -> vm.Stack.Push (DataInt i)
-        | Scalar (Text text) -> vm.Stack.Push (DataText text)
-        | _ -> failwith "Unsupported."
+    vm.OperationStack.Push (ScalarInt result)
 
-    vm.Stack
+and interpretDup vm =
+    let top = vm.OperationStack.Peek ()
+    vm.OperationStack.Push top
+
+and interpretSwap vm =
+    let left = vm.OperationStack.Pop ()
+    let right = vm.OperationStack.Pop ()
+    vm.OperationStack.Push left
+    vm.OperationStack.Push right
+
+and interpretPrint vm =
+    let text = vm.OperationStack.Pop () |> scalarToText
+    Console.WriteLine text

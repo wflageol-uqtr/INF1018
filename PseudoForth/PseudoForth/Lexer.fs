@@ -42,7 +42,7 @@ let alpha = List.reduce List.append [['A'..'Z'];['a'..'z'];['+';'-';'*';'/';'_';
 let alphanum = either [alpha; digit]
 let ident = alpha >>= many alphanum |> convert convertToIdent
 let text = chars ['"'] >>. until (chars ['"']) |> convert convertToText
-let sep = chars ['['; ']'; ';'] |> convert convertToListSep
+let sep = chars [';'] |> convert convertToListSep
 let skipSpaces = skip spaces
 
 // Parser lexical combinant tous les parsers définis.
