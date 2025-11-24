@@ -1,0 +1,57 @@
+Exemple 1
+
+(defun double (x)
+	(+ x x))
+
+(defun quadruple (x)
+	(double (double x)))
+
+(let d2 (double 2))
+(let d4 (double 4))
+(let q6 (quadruple 6))
+
+(printfn d2)
+(printfn d4)
+(printfn q6)
+
+
+Exemple 2
+
+(let liste (list 2 3 4))
+
+(reduce + liste)
+
+
+Exemple 3
+
+(defun add-taxes (price)
+  (+ price
+(/ (* price 15) 100)))
+
+(defun calculate (prices taxable?)
+	(let prices-with-tax
+		(if taxable?
+			(map add-taxes prices)
+			prices))
+(reduce + prices-with-tax))
+
+(calculate (list 100 5 15) t)
+
+
+Exemple Récursif
+
+(defun fibo (n)
+  (if (<= n 2)
+      1
+      (+ (fibo (- n 2))
+         (fibo (- n 1)))))
+
+(fibo 6)
+
+
+Exemple Macro
+
+(defmacro print-code (code)
+  (printfn code))
+
+(print-code (+ 2 3))

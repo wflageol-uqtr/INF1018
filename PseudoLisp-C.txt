@@ -1,0 +1,61 @@
+Exemple 1
+
+function double (x) {
+  x + x;
+}
+
+function quadruple (x) {
+  double(double(x));
+}
+
+var d2 = double(2);
+var d4 = double(4);
+var q6 = quadruple(6);
+
+printfn(d2);
+printfn(d4);
+printfn(q6);
+
+
+Exemple 2
+
+var liste = list(2, 3, 4);
+
+reduce(+, liste);
+
+
+Exemple 3
+
+function addTaxes(price) {
+  price + price * 15 / 100;
+}
+
+function calculate (prices, isTaxable) {
+  var pricesWithTax = if (isTaxable)
+                         map(addTaxes, prices)
+                      else prices;
+  reduce(+, pricesWithTax);
+}
+
+calculate(list(100, 5, 15), true);
+
+
+Exemple Récursif
+
+function fibo(n) {
+  if (n <= 2)
+     1
+  else
+     fibo(n - 2) + fibo(n - 1);
+}
+
+fibo(6);
+
+
+Exemple Macro
+
+macro printCode(code) {
+  printfn(code);
+}
+
+printCode(2 + 3);
