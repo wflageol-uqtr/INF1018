@@ -1,0 +1,70 @@
+Exemple 1
+
+(defun triple (x)
+	(+ x (+ x x)))
+
+(defun sextuple (x)
+	(triple (triple x)))
+
+(let d2 (triple 2))
+(let d4 (triple 4))
+(let q6 (sextuple 6))
+
+(printfn d2)
+(printfn d4)
+(printfn q6)
+
+
+Exemple 2
+
+(let liste (list 3 4 5 6 7))
+
+(reduce * liste)
+
+
+Exemple 3
+
+(defun add-taxes (total)
+  (+ total
+	(/ (* total 12) 100)))
+
+(defun calc (prices taxable?)
+	(let prices-with-tax
+		(if taxable?
+			(map add-taxes prices)
+			prices))
+(reduce + prices-with-tax))
+
+(calc (list 100 5 15 20) t)
+
+
+Exemple Récursif
+
+(defun fact (n)
+  (if (<= n 2)
+      n
+      (* n (fact (- n 1)))))
+
+(fact 5)
+
+
+Exemple Macro
+
+(defmacro print-code (code)
+  (map printfn code))
+
+(print-code (* 3 4 5))
+
+
+Exemple Fonctions Impures
+
+(let value 0)
+
+(defun change-value (v)
+  (set value v))
+  
+(defun indirect-change ()
+  (change-value 12))
+  
+(defun map-change ()
+  (map change-value (list 1 2 3)))
