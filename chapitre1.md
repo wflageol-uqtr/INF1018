@@ -4,7 +4,7 @@
 
 ### Quelques mots par rapport à moi
 
-Mon nom est William Flageol, je suis enseignant à l'UQTR depuis maintenant 5 ans. J'ai aussi enseigné brièvement à l'UQAM. J'ai terminé mon doctorat en Génie Logiciel à l'Université Concordia en 2023.
+Mon nom est William Flageol, je suis enseignant à l'UQTR depuis maintenant 6 ans. J'ai aussi enseigné brièvement à l'UQAM. J'ai terminé mon doctorat en Génie Logiciel à l'Université Concordia en 2023.
 
 Mon domaine de recherche porte sur les langages de programmations et les patrons de conception. Je m'intéresse présentement à la combinaison des fonctionnalités des langages fonctionnels et orientés objet.
 
@@ -25,7 +25,7 @@ Comme mentionné dans le plan de cours, ce cours est divisié en trois parties i
 
 * Les notes de cours que vous lisez présentement;
 * Les travaux à faire tout le long de la session, ainsi que les examens, qui seront la base de votre évaluation;
-* Les séances du mercredi après-midi où nous verrons des exemples, études de cas et où je répondrai à vos questions.
+* Les séances du jeudi soir où nous verrons des exemples, études de cas et où je répondrai à vos questions.
 
 **Il est important de suivre et lire les notes de cours tout le long de la session. Je ne répondrai pas aux questions dont les réponses se trouvent dans ces notes durant les séances.**
 
@@ -35,15 +35,13 @@ Les notes de cours sont une version explosée et détaillée des présentations 
 
 J'ai créé un serveur Discord pour le cours que je vous invite de joindre. Vous pouvez utiliser la salle _Questions_ pour me poser des questions concernant les travaux ou demander des clarifications concernant la matière.
 
-S.V.P. évitez de m'envoyer des questions par courriel; j'en reçois déjà beaucoup trop et il se pourrait que votre question se perde. Discord est l'outil à utiliser pour me contacter.
-
 ### Disponibilité
 
 Je réserve une partie (idéalement la moitié) de chaque séance de cours que vous laisser le temps de lire les notes de cours, travailler sur les différents travaux au cours de la session et me poser des questions.
 
-Je serai généralement à mon bureau au 3072-R les mardi après-midi (jusqu'à 15h). Ma porte reste généralement ouverte, alors vous être libres de venir me voir à tout moment.
+Je serai généralement à mon bureau au 3064-R les mardi après-midi (à partir de 15h00). Ma porte reste généralement ouverte, alors vous être libres de venir me voir à tout moment.
 
-Vous pouvez aussi me contacter par message privé sur Discord.
+Vous pouvez aussi me contacter par message privé sur Discord ou par courriel.
 
 ### Avertissement final
 
