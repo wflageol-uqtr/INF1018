@@ -12,5 +12,5 @@
 | Travail  | Lien GitHub Classroom                   | Date de remise    |
 |----------|-----------------------------------------|-------------------|
 | Devoir 1 | https://github.com/zhevilh/INF1018-Devoir-2 | 8 octobre |
-| Devoir 2 |  | 5 novembre   |
+| Devoir 2 | https://github.com/wflageol-uqtr/INF1018-Devoir-3 | 5 novembre   | 
 | Projet   |  | 17 décembre  |
