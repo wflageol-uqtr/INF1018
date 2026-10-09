@@ -1,23 +1,21 @@
 ﻿open System
-
 open Streams
 open Combinators
-open Lexer
-open Semantic
-open Interpreter
 
-// On crée un stream de caractères à passer au lexer.
-let charStream = stream "1234 * 123 - 3642 / 12345"
-let tokens = lex charStream
+let chars string = List.map one string
+let lettre = chars (List.append ['A'..'Z'] ['a'..'z'])
+             |> List.reduce either
+let chiffre = chars ['0'..'9'] |> List.reduce either
+let chiffres = chiffre >>= many chiffre
+let id = lettre >>= many (either lettre chiffre)
+let nonzero = chars ['1'..'9'] |> List.reduce either
+let entier = either (optional (one '-') >>= nonzero >>= many chiffre)
+                    (optional (one '-') >>= one '0')
+let nombre = entier >>= optional (one '.' >>= chiffres >>= optional (one 'E' >>= entier))
 
-// Affichage de tous les tokens retournés par le lexer.
-for token in tokens do
-    Console.WriteLine token
+let parser = nombre
 
-// On crée un stream de token à passer au parser sémantique.
-let tokenStream = stream tokens
-let ast = parseExpression tokenStream |> unwrap |> Seq.head
+let stream = stream "1.0E2"
 
-// On passe l'arbre de syntaxe abstrait obtenu à l'interpréteur.
-interpret ast
+parser stream
 |> Console.WriteLine
