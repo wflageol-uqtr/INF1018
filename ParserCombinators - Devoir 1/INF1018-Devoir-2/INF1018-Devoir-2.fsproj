@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>INF1018_Devoir_2</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Streams.fs" />
+    <Compile Include="Combinators.fs" />
+    <Compile Include="Library.fs" />
+  </ItemGroup>
+
+</Project>
